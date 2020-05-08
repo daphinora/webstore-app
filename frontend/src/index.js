@@ -7,7 +7,7 @@ document.addEventListener("DOMContentLoaded", () => {
     const newButton = document.getElementById("new-item-btn")
     const newForm = document.getElementById("add-item-form")
     const itemFormContainer = document.querySelector(".container")
-
+    // const buyItemButton = document.querySelector(".buyButton")
     fetchUrl()
 
     newButton.addEventListener("click", () => {
@@ -20,6 +20,7 @@ document.addEventListener("DOMContentLoaded", () => {
     });
 
     newForm.addEventListener("submit", addNewItem)
+    // buyItemButton.addEventListener("submit", buyItem)
 })
 
 function fetchUrl() {
@@ -33,11 +34,7 @@ function fetchUrl() {
 
 function displayItems() {
     itemsContainer = document.getElementById("items-container")
-    // itemsContainer.innerHTML = ''
-    // so if line 32 is commented out then the display function runs twice and renders the images twice.
-    // if line 32 is commented in then the display function can't pull the new info from the add function.
-    // lose/lose. yeay
-    // why is there not a freaking .uniq i can jus throw into 
+    itemsContainer.innerHTML = ''
     items.forEach(item => {
         let itemCard = document.createElement('div')
         itemCard.classList.add("item-card")
@@ -61,12 +58,18 @@ function displayItems() {
         let description = document.createElement('p')
         description.classList.add("description")
         description.innerText = item.description
+
+        // this is a fake "buy button" lol
+
+        let buyButton = document.createElement('p')
+        buyButton.innerHTML = '<input type="button" value="Buy Item" onclick="this.parentNode.parentNode.style.display=`none`; buyItem()" class="buyButton"/>'
         
         itemCard.append(title)
         itemCard.append(seller)
         itemCard.append(image)
         itemCard.append(price)
         itemCard.append(description)
+        itemCard.append(buyButton)
         itemsContainer.appendChild(itemCard)
     });
 }
@@ -133,3 +136,8 @@ function addNewItem(event) {
         event.target.price.value = ""
         event.target.description.value = ""
     }
+
+    // just cheesing it >:333
+function buyItem(event) {
+    console.log("learn how to delete the itemcard lololol silly goose >:3")
+}
