@@ -6,6 +6,7 @@
         <script type="text/javascript" src="src/index.js"></script>
         <link rel="stylesheet" href="index.css" />
     </head>
+
     <body>
         <div id="store-header">
             <img
@@ -13,14 +14,65 @@
             alt="store-header"/>
         </div>
 
-        <div id="item-container">
-            <ul id="items">
-                <li id="item">
-                    
-                </li>
-            </ul>
+        <p style="text-align: center;" class="button-container">
+            <button id="new-item-btn">List New Item</button>
+        </p>
+
+        <div class="container">
+            <form class="add-item-form" id="add-item-form">
+                <h3>List a new item for sale!</h3>
+                <input
+                    type="text"
+                    name="name"
+                    value=""
+                    placeholder="New Item's Name"
+                    class="input-text"
+                />
+                <br>
+                <input
+                    type="text"
+                    name="image"
+                    value=""
+                    placeholder="New Item's Image URL"
+                    class="input-text"
+                />
+                <br>
+                <input
+                    type="text"
+                    name="description"
+                    value=""
+                    placeholder="New Item's Description"
+                    class="input-text"
+                />
+                <br>
+                <input
+                    type="text"
+                    name="price"
+                    value=""
+                    placeholder="New Item's Price"
+                    class="input-text"
+                />
+                <br>
+                <input
+                    type="text"
+                    name="seller"
+                    value=""
+                    placeholder="Your Username"
+                    class="input-text"
+                />
+                <br>
+                <input
+                    type="submit"
+                    name="submit"
+                    value="Create New Toy"
+                    class="submit"
+                />
+            </form>
         </div>
 
+        <div id="items-container">
+        </div>
 
     </body>
+
 </html>
