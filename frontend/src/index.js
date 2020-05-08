@@ -97,33 +97,39 @@ function addNewItem(event) {
         let description = document.createElement('p')
         description.classList.add("description")
         description.innerText = event.target.description.value
-
-        event.target.name.value = ""
-        event.target.seller.value = ""
-        event.target.image.value = ""
-        event.target.price.value = ""
-        event.target.description.value = ""
         
         newItemCard.append(title)
         newItemCard.append(seller)
         newItemCard.append(image)
         newItemCard.append(price)
         newItemCard.append(description)
-    itemsContainer.appendChild(newItemCard)
-    items.push(itemsContainer)
-    
-    let addItemPatch = {
-        method: "PATCH",
-        headers: {
-            "Content-Type": "application/json",
-            "Accept": "application/json"
-        },
-        body: JSON.stringify({items})
+        itemsContainer.appendChild(newItemCard)
+        items.push(itemsContainer)
+        
+        let addItemPatch = {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json",
+                "Accept": "application/json"
+            },
+            body: JSON.stringify({
+                name: event.target.name.value,
+                seller: event.target.seller.value,
+                image: event.target.image.value,
+                price: event.target.price.value,
+                description: event.target.description.value
+            })
+        }
+        
+        fetch(url, addItemPatch)
+        .then(rsp => rsp.json())
+        .then(json => {
+            fetchUrl()
+        })
+        
+        event.target.name.value = ""
+        event.target.seller.value = ""
+        event.target.image.value = ""
+        event.target.price.value = ""
+        event.target.description.value = ""
     }
-    
-    fetch(url, addItemPatch)
-    .then(rsp => rsp.json())
-    .then(json => {
-        fetchUrl()
-    })
-}
