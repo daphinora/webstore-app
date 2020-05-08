@@ -140,4 +140,5 @@ function addNewItem(event) {
     // just cheesing it >:333
 function buyItem(event) {
     console.log("learn how to delete the itemcard lololol silly goose >:3")
+    console.log(this)
 }
